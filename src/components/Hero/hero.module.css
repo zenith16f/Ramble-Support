@@ -1,0 +1,89 @@
+.heroWrapper {
+  position: relative;
+  height: 40vw;
+  width: 100%;
+}
+
+.imageWrapper {
+  z-index: -1;
+  object-fit: cover;
+}
+
+.heroMain {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100vw;
+  flex-direction: column;
+}
+/* 
+@media screen and (max-width: 1500px) {
+  .heroWrapper {
+    height: 45vw;
+  }
+
+  .heroMain {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 80vw;
+    flex-direction: column;
+  }
+} */
+/* 
+@media screen and (max-width: 1300px) {
+  .heroWrapper {
+    height: 50vw;
+  }
+
+  .heroMain {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 90vw;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .heroWrapper {
+    height: 55vw;
+  }
+
+  .heroMain {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100vw;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .heroWrapper {
+    height: 100vw;
+  }
+
+  .heroMain {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 60vw;
+    flex-direction: column;
+  }
+}
+*/
+/* @media screen and (max-width: 680px) {
+  .heroWrapper {
+    height: 150vw;
+    width: 100%;
+  }
+
+  .heroMain {
+    position: relative;
+    display: flex;
+    width: 90%;
+    height: 100vw;
+    flex-direction: column;
+  }
+} */
