@@ -1,82 +1,159 @@
-import Hero from "@/components/Hero/Hero";
+"use client";
+
+import {
+  AuthButtonStyles,
+  AuthInputStyles,
+  AuthLabelStyles,
+  AuthLinkStyle,
+} from "@/app/styles/taiwlindStyles";
+import { signIn } from "next-auth/react";
 import Image from "next/legacy/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { Toaster, toast } from "sonner";
 
-export default function HomePage() {
+const LoginPage = () => {
+  //: Router
+  const router = useRouter();
+
+  //: React Hook Form
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  //: Regular Expression
+  const mail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  //: On submit function
+  const onSubmit = handleSubmit(async (data: any) => {
+    const { email, password } = data;
+
+    if (!mail.test(email)) {
+      toast.error("El correo ingresado no es válido");
+      return;
+    }
+
+    if (password.length < 6) {
+      toast.error("La contraseña debe tener al menos 6 caracteres");
+      return;
+    }
+
+    // router.push("/ramble/soporte");
+    // const res: any = await signIn("credentials", {
+    //   email: email,
+    //   password: password,
+    //   redirect: false,
+    // });
+
+    const res = { data: "data", error: NaN };
+    if (res.error) {
+      toast.error(res.error);
+    } else {
+      router.push("/ramble/soporte");
+      toast.success("Inicio de sesion exitoso", {
+        duration: 1500,
+        onAutoClose(toast) {
+          toast.title = "Redirigiendo";
+          toast.duration = 1500;
+          router.push("/ramble/soporte");
+        },
+      });
+    }
+  });
+
+  //* TSX Return
   return (
-    <main>
-      <Hero />
-      <div className="mx-40 my-20 ">
-        <div className="flex-col justify-center items-center content-center">
-          <div className="py-4 my-6">
-            <h1 className="text-5xl font-header text-center font-medium">
-              ¿Que es Ramble?
-            </h1>
+    <div className="min-h-screen flex items-center justify-center bg-gray-950">
+      <div className="bg-navyBlue-900 m-10 w-11/12">
+        <div className="flex flex-row bg-zinc-300 items-center align-middle content-center justify-between">
+          <div className="w-4/6 h-full flex felx-col justify-center align-middle py-10 ">
+            <form
+              onSubmit={onSubmit}
+              className="grid grid-flow-row gap-2 h-full w-8/12 text-black  "
+            >
+              <h1 className="font-semibold text-3xl my-5 py-5">
+                Iniciar Sesión por el Soporte
+              </h1>
 
-            <p className="text-center py-12 text-lg">
-              Lorem Ipsum es simplemente el texto de relleno de las imprentas y
-              archivos de texto. Lorem Ipsum ha sido el texto de relleno
-              estándar de las industrias desde el año 1500, cuando un impresor
-              (N. del T. persona que se dedica a la imprenta) desconocido usó
-              una galería de textos y los mezcló de tal manera que logró hacer
-              un libro de textos especimen.
-            </p>
+              <label
+                htmlFor="email"
+                className={AuthLabelStyles}
+              >
+                Correo*
+              </label>
+
+              <input
+                type="email"
+                placeholder="Ingresa tu correo electronico"
+                className={AuthInputStyles}
+                {...register("email", {
+                  required: {
+                    value: true,
+                    message: "El correo es un campo requerido",
+                  },
+                })}
+              />
+              {errors.email && (
+                <span className="text-red-500 text-sm">
+                  {String(errors.email.message)}
+                </span>
+              )}
+
+              <label
+                htmlFor="password"
+                className={AuthLabelStyles}
+              >
+                Contraseña*
+              </label>
+
+              <input
+                type="password"
+                placeholder="Ingresa tu contraseña"
+                className={AuthInputStyles}
+                {...register("password", {
+                  required: {
+                    value: true,
+                    message: "La contraseña es un campo requerido",
+                  },
+                })}
+              />
+              {errors.password && (
+                <span className="text-red-500 text-sm">
+                  {String(errors.password.message)}
+                </span>
+              )}
+
+              <section className="w-full flex flex-col items-center mt-10 ">
+                <button
+                  type="submit"
+                  className={AuthButtonStyles}
+                >
+                  Iniciar Sesion
+                </button>
+              </section>
+            </form>
           </div>
 
-          <div className="grid grid-flow-row-dense grid-cols-2 gap-3 md:gap-10 max-medium:grid-cols-1">
-            <div className="w-full py-12">
-              <h2 className="font-header text-4xl py-3 mb-4 font-medium">
-                Encuentra
-              </h2>
-              <p className="font-body text-lg">
-                Lorem Ipsum es simplemente el texto de relleno de las imprentas
-                y archivos de texto. Lorem Ipsum ha sido el texto de relleno
-                estándar de las industrias desde el año 1500, cuando un impresor
-                (N. del T. persona que se dedica a la imprenta) desconocido usó
-                una galería de textos y los mezcló de tal manera que logró hacer
-                un libro de textos especimen.
-              </p>
-            </div>
-            <div className="flex items-center justify-center">
-              <Image
-                src={"/images/Encuentra.svg"}
-                alt="Encuentra"
-                width={275}
-                height={400}
-              />
-            </div>
-
-            <div className="flex items-center justify-center">
-              <Image
-                src={"/images/Ubica.svg"}
-                alt="Ubica"
-                width={375}
-                height={250}
-                className="w-full h-full"
-              />
-            </div>
-            <div>
-              <h2 className="font-header text-4xl py-3 mb-4 text-right font-medium">
-                Ubica
-              </h2>
-              <p className="font-body text-lg text-right">
-                Lorem Ipsum es simplemente el texto de relleno de las imprentas
-                y archivos de texto. Lorem Ipsum ha sido el texto de relleno
-                estándar de las industrias desde el año 1500, cuando un impresor
-                (N. del T. persona que se dedica a la imprenta) desconocido usó
-                una galería de textos y los mezcló de tal manera que logró hacer
-                un libro de textos especimen.
-              </p>
-            </div>
+          <div className="w-1/2 h-full">
+            <Image
+              src={"/images/FormImage.svg"}
+              alt="Form Image"
+              width={625}
+              height={800}
+              className="w-full h-full"
+              priority={true}
+            ></Image>
           </div>
-        </div>
-
-        <div className="w-full flex flex-col justify-center items-center mt-20">
-          <h2 className="font-heading text-4xl py-3 mb-4 font-medium content-center">
-            Explorar más
-          </h2>
         </div>
       </div>
-    </main>
+      <Toaster
+        position="top-center"
+        richColors
+      />
+    </div>
   );
-}
+};
+export default LoginPage;

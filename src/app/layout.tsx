@@ -16,7 +16,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <link
+        rel="icon"
+        href="/RambleLogo.svg"
+        sizes="any"
+      />
+      <body className={inter.className}>
+        <main className="font-body">{children}</main>
+      </body>
     </html>
   );
 }
