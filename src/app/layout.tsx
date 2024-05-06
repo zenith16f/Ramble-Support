@@ -1,3 +1,4 @@
+// import Footer from "@/components/Footer/Footer";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -22,7 +23,10 @@ export default function RootLayout({
         sizes="any"
       />
       <body className={inter.className}>
-        <main className="font-body">{children}</main>
+        <main className="font-body text-black duration-300">
+          {children}
+          {/* <Footer /> */}
+        </main>
       </body>
     </html>
   );

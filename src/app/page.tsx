@@ -1,14 +1,11 @@
 "use client";
-
 import {
   AuthButtonStyles,
   AuthInputStyles,
   AuthLabelStyles,
-  AuthLinkStyle,
 } from "@/app/styles/taiwlindStyles";
 import { signIn } from "next-auth/react";
 import Image from "next/legacy/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { Toaster, toast } from "sonner";
@@ -36,29 +33,21 @@ const LoginPage = () => {
       return;
     }
 
-    if (password.length < 6) {
-      toast.error("La contraseña debe tener al menos 6 caracteres");
-      return;
-    }
+    const res: any = await signIn("credentials", {
+      email: email,
+      password: password,
+      redirect: false,
+    });
 
-    // router.push("/ramble/soporte");
-    // const res: any = await signIn("credentials", {
-    //   email: email,
-    //   password: password,
-    //   redirect: false,
-    // });
-
-    const res = { data: "data", error: NaN };
     if (res.error) {
       toast.error(res.error);
     } else {
-      router.push("/ramble/soporte");
       toast.success("Inicio de sesion exitoso", {
         duration: 1500,
         onAutoClose(toast) {
           toast.title = "Redirigiendo";
           toast.duration = 1500;
-          router.push("/ramble/soporte");
+          router.push("/support/tickets");
         },
       });
     }
@@ -74,8 +63,8 @@ const LoginPage = () => {
               onSubmit={onSubmit}
               className="grid grid-flow-row gap-2 h-full w-8/12 text-black  "
             >
-              <h1 className="font-semibold text-3xl my-5 py-5">
-                Iniciar Sesión por el Soporte
+              <h1 className="font-header text-3xl my-5 py-5">
+                Inicio de Sesión Soporte
               </h1>
 
               <label
