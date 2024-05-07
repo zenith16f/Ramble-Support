@@ -82,7 +82,7 @@ export const columns: ColumnDef<Ticket>[] = [
       return (
         <div className="flex justify-center">
           <Link
-            href={`/support/ticket/${row.getValue("id")}`}
+            href={`/support/solucion/${row.getValue("id")}`}
             className="w-full flex items-center justify-center bg-emerald-500 hover:bg-emerald-700 hover:text-white text-black py-2  rounded duration-300"
           >
             <button>Detalles</button>
