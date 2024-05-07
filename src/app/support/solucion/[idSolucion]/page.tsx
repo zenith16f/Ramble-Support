@@ -11,10 +11,10 @@ const Solucion = async ({ params }: SolutonProps) => {
     | null
     | undefined;
 
-  const dateCreation = new Date(solucion?.fechaProblema);
+  const dateCreation = new Date(solucion?.fechaProblema as Date);
   const formattedDateCreation = dateCreation.toLocaleDateString();
 
-  const dateSolution = new Date(solucion?.fechaSolucion);
+  const dateSolution = new Date(solucion?.fechaSolucion as Date);
   const formattedDateSolution = dateSolution.toLocaleDateString();
 
   //* TSX
