@@ -8,3 +8,6 @@ export const AuthButtonStyles =
   "bg-teal-900 font-body font-thin text-white py-3 rounded-3xl mb-3 hover:bg-greenBlue-700 duration-300 items-center justify-center content-center align-middle w-1/2";
 
 export const AuthLinkStyle = "text-white font-md text-left text-sm";
+
+//* Global Styles
+export const HeaderGlobalStyle = "font-bold text-xl ";

@@ -23,10 +23,7 @@ export default function RootLayout({
         sizes="any"
       />
       <body className={inter.className}>
-        <main className="font-body text-black duration-300">
-          {children}
-          {/* <Footer /> */}
-        </main>
+        <main className="font-body text-black duration-300">{children}</main>
       </body>
     </html>
   );

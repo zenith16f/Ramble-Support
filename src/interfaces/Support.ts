@@ -33,3 +33,9 @@ export interface SolutonProps {
     idSolucion: string;
   };
 }
+
+export interface TicketProps {
+  params: {
+    id: string;
+  };
+}

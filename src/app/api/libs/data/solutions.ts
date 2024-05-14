@@ -25,7 +25,7 @@ export const fetchSolution = async (id: string) => {
     }
   );
 
-  if (solution.status !== 200) return {};
+  if (solution.status !== 200) return null;
 
   return solution.data;
 };

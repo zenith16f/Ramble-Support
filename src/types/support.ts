@@ -13,7 +13,7 @@ export type TicketType = {
   emisor: string;
   fechaCreacion: Date;
   prioridad: number;
-  descripcion: string;
+  descripcionTicket: string;
   estado: Estado;
   tema: Tema;
 };
@@ -26,4 +26,12 @@ export type SolutionType = {
   fechaProblema: Date;
   fechaSolucion: Date;
   tema: Tema;
+};
+
+export type UserType = {
+  id: string;
+  email: string;
+  nombre: string;
+  apellido: string;
+  created_at: Date;
 };
