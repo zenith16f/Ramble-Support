@@ -16,7 +16,7 @@ export const fetchTickets = async () => {
 };
 
 export const fetchTicketsByStatus = async (status: string) => {
-  const tickets = await fetch(
+  const tickets = await axios.get(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/tickets/list/${status}`,
     {
       method: "GET",
@@ -26,15 +26,13 @@ export const fetchTicketsByStatus = async (status: string) => {
     }
   );
 
-  const ticketsResponse = await tickets.json();
+  if (tickets.status !== 200) return [];
 
-  if (!ticketsResponse) return null;
-
-  return ticketsResponse;
+  return tickets.data;
 };
 
 export const fetchTicketsByUser = async (id: string) => {
-  const tickets = await fetch(
+  const tickets = await axios.get(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/tickets/list/user/${id}`,
     {
       method: "GET",
@@ -44,11 +42,9 @@ export const fetchTicketsByUser = async (id: string) => {
     }
   );
 
-  const ticketsResponse = await tickets.json();
+  if (tickets.status !== 200) return [];
 
-  if (!ticketsResponse) return null;
-
-  return ticketsResponse;
+  return tickets.data;
 };
 
 export const fetchTicket = async (id: string) => {

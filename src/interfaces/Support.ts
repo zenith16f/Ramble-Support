@@ -1,3 +1,4 @@
+import AsignateBtn from "../components/Soporte/Tickets/AsignateBtn";
 export interface Estado {
   id: number;
   tipoEstado: string;
@@ -38,4 +39,13 @@ export interface TicketProps {
   params: {
     id: string;
   };
+}
+
+export interface IDTicketsProps {
+  id: string;
+}
+
+export interface AsignateTicketProps {
+  id: string;
+  idUsuario: string;
 }

@@ -80,17 +80,7 @@ export const columns: ColumnDef<Ticket>[] = [
 
   {
     accessorKey: "estado.tipoEstado",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Estado
-          <ArrowUpDown className="h-4" />
-        </Button>
-      );
-    },
+    header: "Estado",
   },
   {
     accessorKey: "id",

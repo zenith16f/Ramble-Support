@@ -2,6 +2,7 @@ import { fetchTicket } from "@/app/api/libs/data/tickets";
 import { HeaderGlobalStyle as HeaderStyle } from "@/app/styles/taiwlindStyles";
 import { TicketProps } from "@/interfaces/Support";
 import { TicketType } from "@/types/support";
+import AsignateBtn from "../../../../components/Soporte/Tickets/AsignateBtn";
 
 const page = async ({ params }: TicketProps) => {
   const { id } = params;
@@ -45,7 +46,9 @@ const page = async ({ params }: TicketProps) => {
           <h3>{ticket?.estado.tipoEstado}</h3>
         </section>
 
-        <div>Aqui va el boton para asignar tickets</div>
+        <div>
+          <AsignateBtn id={ticket?.id as string} />
+        </div>
       </div>
     </div>
   );
