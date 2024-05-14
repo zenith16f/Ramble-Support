@@ -1,16 +1,17 @@
-import axios from "axios";
-
 export const getUserByMail = async (email: string) => {
-  const user = await axios.get(
+  const user = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/get/email/${email}`,
     {
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     }
   );
 
-  if (user.status !== 200) return null;
+  const userRes = await user.json();
 
-  return user.data;
+  if (userRes.error) return false;
+
+  return userRes;
 };

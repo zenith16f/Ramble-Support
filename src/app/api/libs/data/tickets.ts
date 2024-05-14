@@ -16,35 +16,38 @@ export const fetchTickets = async () => {
 };
 
 export const fetchTicketsByStatus = async (status: string) => {
-  const tickets = await axios.get(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/tickets/list/${status}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
+  try {
+    const tickets = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/tickets/list/${status}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
-  if (tickets.status !== 200) return [];
-
-  return tickets.data;
+    return tickets.data;
+  } catch (error) {
+    return [];
+  }
 };
 
 export const fetchTicketsByUser = async (id: string) => {
-  const tickets = await axios.get(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/tickets/list/user/${id}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
-
-  if (tickets.status !== 200) return [];
-
-  return tickets.data;
+  try {
+    const tickets = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/tickets/list/user/${id}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return tickets.data;
+  } catch (error) {
+    return [];
+  }
 };
 
 export const fetchTicket = async (id: string) => {
@@ -60,7 +63,7 @@ export const fetchTicket = async (id: string) => {
 
   const ticketResponse = await ticket.json();
 
-  if (!ticketResponse) return null;
+  if (ticketResponse.error) return false;
 
   return ticketResponse;
 };

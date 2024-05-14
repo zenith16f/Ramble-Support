@@ -17,7 +17,7 @@ const page = async ({ params }: TicketProps) => {
       <div className="font-body flex flex-col gap-5 p-5">
         <section className="flex flex-col gap-2">
           <h1 className={HeaderStyle}>Emisor</h1>
-          {ticket?.emisor}
+          <h2>{ticket?.emisor}</h2>
         </section>
 
         <section className="flex flex-row gap-10">
