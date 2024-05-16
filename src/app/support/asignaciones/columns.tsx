@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Estado, Tema } from "@/types/support";
 import { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown, MoreHorizontal } from "lucide-react";
+import { ArrowUpDown } from "lucide-react";
 import Link from "next/link";
 
 // This type is used to define the shape of our data.
@@ -26,6 +26,7 @@ export const columns: ColumnDef<Ticket>[] = [
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="font-semibold"
         >
           Tipo de Ticket
           <ArrowUpDown className="h-4" />
@@ -44,6 +45,7 @@ export const columns: ColumnDef<Ticket>[] = [
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="font-semibold"
         >
           Prioridad
           <ArrowUpDown className="h-4" />
@@ -65,6 +67,7 @@ export const columns: ColumnDef<Ticket>[] = [
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="font-semibold"
         >
           Fecha de Creacion
           <ArrowUpDown className="h-4" />
@@ -85,6 +88,7 @@ export const columns: ColumnDef<Ticket>[] = [
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="font-semibold"
         >
           Estado
           <ArrowUpDown className="h-4" />

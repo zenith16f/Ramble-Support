@@ -1,20 +1,5 @@
 import axios from "axios";
 
-export const fetchTickets = async () => {
-  const tickets = await axios.get(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/tickets/list`,
-    {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
-
-  if (tickets.status !== 200) return [];
-
-  return tickets.data;
-};
-
 export const fetchTicketsByStatus = async (status: string) => {
   try {
     const tickets = await axios.get(
@@ -29,6 +14,7 @@ export const fetchTicketsByStatus = async (status: string) => {
 
     return tickets.data;
   } catch (error) {
+    console.log(error);
     return [];
   }
 };
@@ -46,24 +32,25 @@ export const fetchTicketsByUser = async (id: string) => {
     );
     return tickets.data;
   } catch (error) {
+    console.log(error);
     return [];
   }
 };
 
 export const fetchTicket = async (id: string) => {
-  const ticket = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/tickets/get/${id}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
+  try {
+    const ticket = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/tickets/get/${id}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
-  const ticketResponse = await ticket.json();
-
-  if (ticketResponse.error) return false;
-
-  return ticketResponse;
+    return ticket.data;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
 };

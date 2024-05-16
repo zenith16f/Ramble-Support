@@ -41,6 +41,22 @@ export interface TicketProps {
   };
 }
 
+export interface TicketObservationsProps {
+  params: {
+    idTicket: string;
+  };
+}
+
+export interface ObservationProps {
+  params: {
+    idObservacion: string;
+  };
+}
+
+export interface AddObservationProps {
+  idTicket: string;
+}
+
 export interface IDTicketsProps {
   id: string;
 }

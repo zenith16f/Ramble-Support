@@ -12,24 +12,24 @@ export const fetchSolutions = async () => {
     );
     return solutions.data;
   } catch (error) {
+    console.log(error);
     return [];
   }
 };
 
 export const fetchSolution = async (id: string) => {
-  const solution = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/solution/${id}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
-
-  const solutionRes = await solution.json();
-
-  if (solutionRes.error) return false;
-
-  return solutionRes;
+  try {
+    const solution = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/solution/${id}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return solution.data;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
 };

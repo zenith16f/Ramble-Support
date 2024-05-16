@@ -35,3 +35,10 @@ export type UserType = {
   apellido: string;
   created_at: Date;
 };
+
+export type ObservationType = {
+  id: string;
+  fechaCreacion: Date;
+  descripcionObservacion: string;
+  ticket: TicketType;
+};
