@@ -50,6 +50,22 @@ const page = async ({ params }: TicketProps) => {
           <h3>{ticket?.estado.tipoEstado}</h3>
         </section>
 
+        {ticket?.usuario ? (
+          <section className="flex flex-row gap-4">
+            <section className="flex flex-col gap-2">
+              <h1 className={HeaderStyle}>Correo del Usuario asignado</h1>
+              <h3>{ticket.usuario.email}</h3>
+            </section>
+
+            <section className="flex flex-col gap-2">
+              <h1 className={HeaderStyle}>Nombre del Usuario Asignado</h1>
+              <h3 className="capitalize">
+                {ticket.usuario.nombre} {ticket.usuario.apellido}
+              </h3>
+            </section>
+          </section>
+        ) : null}
+
         <div>
           <AsignateBtn id={ticket?.id as string} />
         </div>

@@ -67,4 +67,16 @@ export interface AsignateTicketProps {
 
 export interface ChangeStatusProps {
   id: string;
+  oldStatus: string;
+}
+
+export interface AddSolutionProps {
+  id: string;
+  estado: string;
+  email: string;
+}
+
+export interface SolutionFormProps {
+  id: string;
+  estado: string;
 }

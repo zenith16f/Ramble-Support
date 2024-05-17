@@ -16,6 +16,7 @@ export type TicketType = {
   descripcionTicket: string;
   estado: Estado;
   tema: Tema;
+  usuario?: UserType;
 };
 
 export type SolutionType = {
@@ -45,5 +46,5 @@ export type ObservationType = {
 
 export type StatusType = {
   id: number;
-  tipoTicket: string;
+  tipoEstado: string;
 };

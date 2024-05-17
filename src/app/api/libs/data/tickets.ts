@@ -58,7 +58,7 @@ export const fetchTicket = async (id: string) => {
 export const fetchStatus = async () => {
   try {
     const status = await axios.get(
-      `${process.env.NEXT_PUBLIC_BACKEND_URL}/temas/list`,
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/status/list`,
       {
         headers: {
           "Content-Type": "application/json",

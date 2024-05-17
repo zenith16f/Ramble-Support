@@ -1,5 +1,7 @@
 "use client";
+import { fetchTicket } from "@/app/api/libs/data/tickets";
 import { AsignateTicketProps } from "@/interfaces/Support";
+import { TicketType } from "@/types/support";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -10,6 +12,12 @@ const AsignateForm = ({ id, idUsuario }: AsignateTicketProps) => {
   const router = useRouter();
 
   const onSubmit = handleSubmit(async () => {
+    const ticket = (await fetchTicket(id)) as TicketType | null | undefined;
+
+    if (ticket?.usuario) {
+      return toast.error("Este ticket ya tiene un usuario asignado");
+    }
+
     const ticketAssigned = await fetch(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/tickets/asignate/${id}`,
       {
