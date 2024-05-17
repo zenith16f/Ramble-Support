@@ -42,3 +42,8 @@ export type ObservationType = {
   descripcionObservacion: string;
   ticket: TicketType;
 };
+
+export type StatusType = {
+  id: number;
+  tipoTicket: string;
+};

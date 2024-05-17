@@ -87,7 +87,7 @@ const AddObservation = ({ idTicket }: AddObservationProps) => {
 
         <Link
           href={`/support/observations/${idTicket}`}
-          className="bg-slate-500 flex items-center justify-center hover:bg-slate-700 hover:text-white text-black py-2 px-4 rounded duration-3 duration-300 w-1/2 "
+          className="bg-slate-500 flex items-center justify-center hover:bg-slate-700 hover:text-white text-black py-2 px-4 rounded duration-3 duration-300 w-1/2"
         >
           Cancelar
         </Link>

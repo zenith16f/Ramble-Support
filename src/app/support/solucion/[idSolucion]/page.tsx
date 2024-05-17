@@ -1,5 +1,6 @@
 import { fetchSolution } from "@/app/api/libs/data/solutions";
 import { HeaderGlobalStyle as HeaderStyle } from "@/app/styles/taiwlindStyles";
+import ReturnBtn from "@/components/Soporte/buttons/ReturnBtn";
 import { SolutonProps } from "@/interfaces/Support";
 import { SolutionType } from "@/types/support";
 
@@ -22,6 +23,9 @@ const Solucion = async ({ params }: SolutonProps) => {
   return (
     <div className="bg-neutral-400 p-5 my-5 rounded-md w-full">
       <div className="font-body flex flex-col gap-5 p-5">
+        <section className="flex justify-start">
+          <ReturnBtn enlace={`/support/soluciones`} />
+        </section>
         <section className="flex flex-col gap-2">
           <h1 className={HeaderStyle}>Solucionador</h1>
           <h2>{solucion?.solucionador}</h2>

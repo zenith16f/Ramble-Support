@@ -59,7 +59,7 @@ const AsignateForm = ({ id, idUsuario }: AsignateTicketProps) => {
   return (
     <form onSubmit={onSubmit}>
       <button
-        className="flex justify-center bg-indigo-300 p-3 rounded-md w-full hover:bg-indigo-400 transition-all duration-300 ease-in-out"
+        className="flex justify-center items-center text-white bg-blue-900 p-3 rounded-md px-10 hover:bg-blue-400 hover:text-black transition-all duration-300 ease-in-out"
         type="submit"
       >
         Asignarme Ticket

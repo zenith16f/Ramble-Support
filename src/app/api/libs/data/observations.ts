@@ -22,7 +22,6 @@ export const getObservationsByTicket = async (id: string) => {
 };
 
 export const getObservation = async (id: string) => {
-  console.log("id: ", id);
   try {
     const observation = await axios.get(
       `

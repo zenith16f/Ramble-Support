@@ -12,8 +12,6 @@ const Observation = async ({ params }: ObservationProps) => {
     | null
     | undefined;
 
-  console.log("Observation: ", observation);
-
   const dateCreation = new Date(observation?.fechaCreacion as Date);
   const formattedDateCreation = dateCreation.toLocaleDateString();
 

@@ -1,5 +1,6 @@
 import { fetchTicket } from "@/app/api/libs/data/tickets";
 import { HeaderGlobalStyle as HeaderStyle } from "@/app/styles/taiwlindStyles";
+import ReturnBtn from "@/components/Soporte/buttons/ReturnBtn";
 import { TicketProps } from "@/interfaces/Support";
 import { TicketType } from "@/types/support";
 import AsignateBtn from "../../../../components/Soporte/Tickets/AsignateBtn";
@@ -15,6 +16,9 @@ const page = async ({ params }: TicketProps) => {
   return (
     <div className="bg-neutral-400 p-5 my-5 rounded-md w-full">
       <div className="font-body flex flex-col gap-5 p-5">
+        <section className="flex justify-start">
+          <ReturnBtn enlace={`/support/tickets`} />
+        </section>
         <section className="flex flex-col gap-2">
           <h1 className={HeaderStyle}>Emisor</h1>
           <h2>{ticket?.emisor}</h2>

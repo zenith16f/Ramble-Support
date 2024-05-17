@@ -54,3 +54,21 @@ export const fetchTicket = async (id: string) => {
     return false;
   }
 };
+
+export const fetchStatus = async () => {
+  try {
+    const status = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/temas/list`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    return status.data;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
