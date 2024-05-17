@@ -1,8 +1,10 @@
 "use client";
 import { signOut } from "next-auth/react";
 import Image from "next/legacy/image";
-import { CiInboxIn, CiInboxOut } from "react-icons/ci";
+import { HiTicket } from "react-icons/hi2";
 import { MdLogout } from "react-icons/md";
+import { PiUserListFill } from "react-icons/pi";
+import { TbCheckupList } from "react-icons/tb";
 import MenuLink from "./menuLink/MenuLink";
 import styles from "./sidebar.module.css";
 
@@ -10,11 +12,20 @@ const menuItems = [
   {
     title: "Paginas",
     list: [
-      { title: "Tickets", path: "/support/tickets", icon: <CiInboxIn /> },
+      {
+        title: "Tickets",
+        path: "/support/tickets",
+        icon: <HiTicket size={25} />,
+      },
       {
         title: "Soluciones",
         path: "/support/soluciones",
-        icon: <CiInboxOut />,
+        icon: <TbCheckupList size={25} />,
+      },
+      {
+        title: "Mis Tickets",
+        path: "/support/asignaciones",
+        icon: <PiUserListFill size={25} />,
       },
     ],
   },
@@ -51,7 +62,7 @@ const Sidebar = () => {
       <form className="text-lg">
         <button
           className={styles.logout}
-          onClick={async () => await signOut()}
+          onClick={() => signOut()}
         >
           <MdLogout />
           Cerrar Sesión

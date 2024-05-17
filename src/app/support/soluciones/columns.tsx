@@ -3,12 +3,12 @@
 import { Button } from "@/components/ui/button";
 import { Tema } from "@/types/support";
 import { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown, MoreHorizontal } from "lucide-react";
+import { ArrowUpDown } from "lucide-react";
 import Link from "next/link";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type Ticket = {
+export type Solucion = {
   id: string;
   solucionador: string;
   descripcionProblema: string;
@@ -18,7 +18,7 @@ export type Ticket = {
   tema: Tema;
 };
 
-export const columns: ColumnDef<Ticket>[] = [
+export const columns: ColumnDef<Solucion>[] = [
   {
     accessorKey: "tema.tipoTicket",
     header: ({ column }) => {
@@ -26,6 +26,7 @@ export const columns: ColumnDef<Ticket>[] = [
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="font-semibold"
         >
           Tipo de Ticket
           <ArrowUpDown className="h-4" />
@@ -44,6 +45,7 @@ export const columns: ColumnDef<Ticket>[] = [
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="font-semibold"
         >
           Fecha de Creacion del Ticket
           <ArrowUpDown className="h-4" />
@@ -63,6 +65,7 @@ export const columns: ColumnDef<Ticket>[] = [
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="font-semibold"
         >
           Fecha de Solucion
           <ArrowUpDown className="h-4" />

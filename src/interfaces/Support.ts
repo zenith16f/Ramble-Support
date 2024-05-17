@@ -33,3 +33,50 @@ export interface SolutonProps {
     idSolucion: string;
   };
 }
+
+export interface TicketProps {
+  params: {
+    id: string;
+  };
+}
+
+export interface TicketObservationsProps {
+  params: {
+    idTicket: string;
+  };
+}
+
+export interface ObservationProps {
+  params: {
+    idObservacion: string;
+  };
+}
+
+export interface AddObservationProps {
+  idTicket: string;
+}
+
+export interface IDTicketsProps {
+  id: string;
+}
+
+export interface AsignateTicketProps {
+  id: string;
+  idUsuario: string;
+}
+
+export interface ChangeStatusProps {
+  id: string;
+  oldStatus: string;
+}
+
+export interface AddSolutionProps {
+  id: string;
+  estado: string;
+  email: string;
+}
+
+export interface SolutionFormProps {
+  id: string;
+  estado: string;
+}

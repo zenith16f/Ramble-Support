@@ -1,11 +1,11 @@
 import { fetchTicket } from "@/app/api/libs/data/tickets";
 import { HeaderGlobalStyle as HeaderStyle } from "@/app/styles/taiwlindStyles";
-import ReturnBtn from "@/components/Soporte/buttons/ReturnBtn";
+import ChangeStatusForm from "@/components/Soporte/forms/ChangeStatus";
 import { TicketProps } from "@/interfaces/Support";
 import { TicketType } from "@/types/support";
-import AsignateBtn from "../../../../components/Soporte/Tickets/AsignateBtn";
+import { Toaster } from "sonner";
 
-const page = async ({ params }: TicketProps) => {
+const ChangeStatus = async ({ params }: TicketProps) => {
   const { id } = params;
 
   const ticket = (await fetchTicket(id)) as TicketType | null | undefined;
@@ -16,9 +16,6 @@ const page = async ({ params }: TicketProps) => {
   return (
     <div className="bg-neutral-400 p-5 my-5 rounded-md w-full">
       <div className="font-body flex flex-col gap-5 p-5">
-        <section className="flex justify-start">
-          <ReturnBtn enlace={`/support/tickets`} />
-        </section>
         <section className="flex flex-col gap-2">
           <h1 className={HeaderStyle}>Emisor</h1>
           <h2>{ticket?.emisor}</h2>
@@ -45,33 +42,28 @@ const page = async ({ params }: TicketProps) => {
           <h3>{ticket?.descripcionTicket}</h3>
         </section>
 
-        <section>
-          <h1 className={HeaderStyle}>Estado del Ticket</h1>
-          <h3>{ticket?.estado.tipoEstado}</h3>
-        </section>
-
-        {ticket?.usuario ? (
-          <section className="flex flex-row gap-4">
-            <section className="flex flex-col gap-2">
-              <h1 className={HeaderStyle}>Correo del Usuario asignado</h1>
-              <h3>{ticket.usuario.email}</h3>
-            </section>
-
-            <section className="flex flex-col gap-2">
-              <h1 className={HeaderStyle}>Nombre del Usuario Asignado</h1>
-              <h3 className="capitalize">
-                {ticket.usuario.nombre} {ticket.usuario.apellido}
-              </h3>
-            </section>
+        <section className="flex flex-col gap-4 mt-5">
+          <section className="flex flex-col gap-2">
+            <h1 className={HeaderStyle}>Estado Actual del Ticket</h1>
+            <h3>{ticket?.estado.tipoEstado}</h3>
           </section>
-        ) : null}
 
-        <div>
-          <AsignateBtn id={ticket?.id as string} />
-        </div>
+          <section>
+            <ChangeStatusForm
+              id={ticket?.id as string}
+              oldStatus={ticket?.estado.tipoEstado as string}
+            />
+          </section>
+        </section>
       </div>
+      <Toaster
+        position="top-center"
+        richColors
+        closeButton
+        visibleToasts={1}
+      />
     </div>
   );
 };
 
-export default page;
+export default ChangeStatus;
