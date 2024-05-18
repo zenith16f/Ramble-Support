@@ -2,6 +2,8 @@ import { fetchTicketsByStatus } from "@/app/api/libs/data/tickets";
 import { columns } from "./columns";
 import { DataTable } from "./data-table";
 
+export const dynamic = "force-dynamic";
+
 const Tickets = async () => {
   const status = "en espera";
   const data = await fetchTicketsByStatus(status);
