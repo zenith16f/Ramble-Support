@@ -2,6 +2,8 @@ import { fetchSolutions } from "@/app/api/libs/data/solutions";
 import { columns } from "./columns";
 import { DataTable } from "./data-table";
 
+export const dynamic = "force-dynamic";
+
 const Soluciones = async () => {
   const data = await fetchSolutions();
 
