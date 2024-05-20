@@ -1,7 +1,6 @@
 "use client";
 import { signOut } from "next-auth/react";
 import Image from "next/legacy/image";
-import { HiTicket } from "react-icons/hi2";
 import { MdLogout } from "react-icons/md";
 import { PiUserListFill } from "react-icons/pi";
 import { TbCheckupList } from "react-icons/tb";
@@ -13,19 +12,14 @@ const menuItems = [
     title: "Paginas",
     list: [
       {
-        title: "Tickets",
-        path: "/support/tickets",
-        icon: <HiTicket size={25} />,
+        title: "Mis Asignaciones",
+        path: "/support/asignaciones",
+        icon: <PiUserListFill size={25} />,
       },
       {
         title: "Soluciones",
         path: "/support/soluciones",
         icon: <TbCheckupList size={25} />,
-      },
-      {
-        title: "Mis Tickets",
-        path: "/support/asignaciones",
-        icon: <PiUserListFill size={25} />,
       },
     ],
   },
