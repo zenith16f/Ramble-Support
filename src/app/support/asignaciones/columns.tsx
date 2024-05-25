@@ -20,6 +20,7 @@ export type Ticket = {
 
 export const columns: ColumnDef<Ticket>[] = [
   {
+    id: "tipoTicket",
     accessorKey: "tema.tipoTicket",
     header: ({ column }) => {
       return (
@@ -33,11 +34,11 @@ export const columns: ColumnDef<Ticket>[] = [
         </Button>
       );
     },
+    cell: ({ row }) => {
+      return <p className="capitalize">{row.getValue("tipoTicket")}</p>;
+    },
   },
-  {
-    accessorKey: "emisor",
-    header: "Emisor",
-  },
+
   {
     accessorKey: "prioridad",
     header: ({ column }) => {
@@ -61,13 +62,52 @@ export const columns: ColumnDef<Ticket>[] = [
     },
   },
   {
-    accessorKey: "fechaCreacion",
+    id: "estado",
+    accessorKey: "estado.tipoEstado",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           className="font-semibold"
+        >
+          Estado
+          <ArrowUpDown className="h-4" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => {
+      if (row.getValue("estado") === "resuelto") {
+        return (
+          <p className="bg-teal-700 text-white p-1 rounded-md">Resuelto</p>
+        );
+      }
+      if (row.getValue("estado") === "en proceso") {
+        return (
+          <p className="bg-sky-700 text-white p-1 rounded-md">En Proceso</p>
+        );
+      }
+      if (row.getValue("estado") === "pendiente") {
+        return <p className="bg-orange-400 p-1 rounded-md">Pendiente</p>;
+      }
+
+      if (row.getValue("estado") === "en espera") {
+        return <p className="bg-amber-400 p-1 rounded-md">En espera</p>;
+      }
+    },
+  },
+  {
+    accessorKey: "emisor",
+    header: "Emisor",
+  },
+  {
+    accessorKey: "fechaCreacion",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          className="font-semibold "
         >
           Fecha de Creacion
           <ArrowUpDown className="h-4" />
@@ -82,21 +122,6 @@ export const columns: ColumnDef<Ticket>[] = [
   },
 
   {
-    accessorKey: "estado.tipoEstado",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-          className="font-semibold"
-        >
-          Estado
-          <ArrowUpDown className="h-4" />
-        </Button>
-      );
-    },
-  },
-  {
     accessorKey: "id",
     header: "",
     cell: ({ row }) => {
@@ -106,7 +131,7 @@ export const columns: ColumnDef<Ticket>[] = [
             href={`/support/asignacion/${row.getValue("id")}`}
             className="w-full flex items-center justify-center bg-emerald-500 hover:bg-emerald-700 hover:text-white text-black py-2  rounded duration-300"
           >
-            <button>Detalles</button>
+            Detalles
           </Link>
         </div>
       );

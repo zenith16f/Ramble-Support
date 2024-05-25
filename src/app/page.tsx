@@ -47,7 +47,7 @@ const LoginPage = () => {
         onAutoClose(toast) {
           toast.title = "Redirigiendo";
           toast.duration = 1500;
-          router.push("/support/tickets");
+          router.push("/support/asignaciones");
         },
       });
     }

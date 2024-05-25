@@ -20,6 +20,7 @@ export type Solucion = {
 
 export const columns: ColumnDef<Solucion>[] = [
   {
+    id: "tipoTicket",
     accessorKey: "tema.tipoTicket",
     header: ({ column }) => {
       return (
@@ -32,6 +33,9 @@ export const columns: ColumnDef<Solucion>[] = [
           <ArrowUpDown className="h-4" />
         </Button>
       );
+    },
+    cell: ({ row }) => {
+      return <p className="capitalize">{row.getValue("tipoTicket")}</p>;
     },
   },
   {
