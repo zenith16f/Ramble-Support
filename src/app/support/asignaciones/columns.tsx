@@ -37,6 +37,9 @@ export const columns: ColumnDef<Ticket>[] = [
     cell: ({ row }) => {
       return <p className="capitalize">{row.getValue("tipoTicket")}</p>;
     },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
+    },
   },
 
   {
@@ -94,6 +97,9 @@ export const columns: ColumnDef<Ticket>[] = [
       if (row.getValue("estado") === "en espera") {
         return <p className="bg-amber-400 p-1 rounded-md">En espera</p>;
       }
+    },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
     },
   },
   {
