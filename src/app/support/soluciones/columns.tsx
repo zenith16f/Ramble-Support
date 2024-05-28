@@ -37,8 +37,12 @@ export const columns: ColumnDef<Solucion>[] = [
     cell: ({ row }) => {
       return <p className="capitalize">{row.getValue("tipoTicket")}</p>;
     },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
+    },
   },
   {
+    id: "solucionador",
     accessorKey: "solucionador",
     header: "Solucionador",
   },

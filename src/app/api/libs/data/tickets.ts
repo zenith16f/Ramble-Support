@@ -72,3 +72,21 @@ export const fetchStatus = async () => {
     return null;
   }
 };
+
+export const fetchTipoTicket = async () => {
+  try {
+    const temas = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/temas/list`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    return temas.data;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
